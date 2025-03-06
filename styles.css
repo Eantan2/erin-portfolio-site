@@ -1,8 +1,8 @@
 :root {
-    --primary-bg: #f4f4f4;
+    --primary-bg: #f8f9fa;
     --primary-text: #2c3e50;
     --secondary-bg: white;
-    --accent: #3498db;
+    --accent: #007bff;
 }
 
 .dark-mode {
@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--primary-bg);
@@ -33,11 +33,13 @@ header {
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
 }
 
 nav ul li a, nav ul li button {
@@ -47,28 +49,49 @@ nav ul li a, nav ul li button {
     background: none;
     border: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.video-section video {
+.video-section {
     width: 100%;
-    max-height: 400px;
+    margin: 0 auto;
+    padding: 0;
 }
 
-.about, .contact, .ai-content, .experience {
-    padding: 20px;
+.video-container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
 }
 
 .about {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: auto;
 }
 
 .about img {
     width: 150px;
+    height: 150px;
     border-radius: 50%;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.about-text {
+    margin-top: 20px;
 }
 
 button {
@@ -79,10 +102,16 @@ button {
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s ease;
+    font-size: 16px;
+    margin-top: 15px;
 }
 
 button:hover {
     background: darken(var(--accent), 10%);
+}
+
+.contact {
+    padding: 40px 20px;
 }
 
 footer {
