@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erin Antanavage - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Erin Antanavage</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="content.html">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="dark-mode-toggle">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="video-section">
+            <video autoplay loop muted>
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>If the video does not load, <a href="https://sora.com/g/gen_01jnmzjdsxfbysm1z71fyb86se" target="_blank">watch it here</a>.</p>
+        </section>
+
+        <section id="about" class="about">
+            <img src="portrait.jpg" alt="Portrait of Erin">
+            <div>
+                <h2>About Me</h2>
+                <p>Military Police | Auditor | Information Systems | Project Analyst</p>
+                <p>Currently pursuing a Master of Science in Information Studies at the University of Washington.</p>
+                <button onclick="window.location.href='content.html'">Explore Projects</button>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:erantanavage@gmail.com">erantanavage@gmail.com</a></p>
+            <p>LinkedIn: <a href="#" target="_blank">My Profile</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Erin Antanavage | <a href="https://github.com/your-username/erin-portfolio-site" target="_blank">GitHub Repo</a></p>
+    </footer>
+</body>
+</html>
