@@ -64,58 +64,77 @@ nav ul li a:hover {
     color: #007bff;
 }
 
-/* Video Section */
-.video-container {
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 1s ease-in-out;
+/* Experience Section */
+.experience {
+    padding: 40px 20px;
 }
 
-video {
-    width: 100%;
-    border-radius: 10px;
-    display: block;
-}
-
-/* About Section */
-.about {
+.experience-list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 20px;
-    max-width: 800px;
-    margin: auto;
+    gap: 20px;
 }
 
-.about img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+.experience-item {
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.experience-item:hover {
+    transform: scale(1.02);
+}
+
+/* AI Image Section */
+.ai-image-section {
+    padding: 40px 20px;
+}
+
+.ai-image {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease-in-out;
 }
 
-.about img:hover {
+.ai-image:hover {
     transform: scale(1.05);
 }
 
-button {
-    background: var(--accent);
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
+/* Projects Section */
+.projects {
+    padding: 40px 20px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.project-card {
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-card img {
+    width: 100%;
     border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 5px 10px rgba(0, 123, 255, 0.3);
 }
 
 /* Footer */
@@ -123,9 +142,4 @@ footer {
     background: var(--secondary-bg);
     padding: 20px;
     font-size: 14px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
