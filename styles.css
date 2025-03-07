@@ -1,3 +1,33 @@
+/* General Reset */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #0056b3;
+}
+
 /* Video Section */
 .video-section {
     position: relative;
@@ -12,22 +42,28 @@
     object-fit: cover;
 }
 
-/* About Section */
-.about {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
 }
 
+/* About Section */
 .about-container {
     display: flex;
     align-items: center;
     max-width: 900px;
-    background: #1e2a38;
+    margin: 50px auto;
+    background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Profile Picture */
@@ -35,34 +71,12 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    object-fit: cover;
     margin-right: 30px;
-    transition: transform 0.3s ease-in-out;
 }
 
-.profile-pic:hover {
-    transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .video-section {
-        height: 40vh;
-    }
-
-    .about {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .profile-pic {
-        width: 120px;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .about-text {
-        text-align: center;
-    }
+/* Footer */
+footer {
+    background: #f1f1f1;
+    padding: 10px;
+    font-size: 14px;
 }
