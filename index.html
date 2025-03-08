@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erin Antanavage - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script> <!-- Ensure JavaScript runs after page loads -->
+    <script defer src="script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -58,13 +58,13 @@
         <p>© 2024 Erin Antanavage | <a href="https://github.com/your-username/erin-portfolio-site" target="_blank">GitHub Repo</a></p>
     </footer>
 
+    <!-- Force Video to Play on Page Load -->
     <script>
-        // Force video to play after page loads
         document.addEventListener("DOMContentLoaded", function () {
             let video = document.getElementById("background-video");
-            if (video) {
-                video.play().catch(error => console.error("Video autoplay blocked:", error));
-            }
+            video.play().catch(error => {
+                console.error("Autoplay failed, requiring user interaction:", error);
+            });
         });
     </script>
 </body>
