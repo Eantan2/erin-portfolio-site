@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erin Antanavage - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -24,7 +23,7 @@
     <main>
         <!-- Full-Width Background Video -->
         <section class="video-section">
-            <video id="background-video" autoplay loop muted playsinline>
+            <video id="background-video" autoplay loop muted playsinline preload="auto">
                 <source src="video1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -58,12 +57,64 @@
         <p>© 2024 Erin Antanavage | <a href="https://github.com/your-username/erin-portfolio-site" target="_blank">GitHub Repo</a></p>
     </footer>
 
-    <!-- Force Video to Play on Page Load -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let video = document.getElementById("background-video");
-            video.play().catch(error => {
-                console.error("Autoplay failed, requiring user interaction:", error);
+        // Enhanced video autoplay handling
+        document.addEventListener("DOMContentLoaded", function() {
+            const video = document.getElementById("background-video");
+            
+            // Function to handle video play
+            function playVideo() {
+                if (video) {
+                    video.play().catch(error => {
+                        console.warn("Autoplay was prevented:", error);
+                        
+                        // Add a click event listener to the document as a fallback
+                        // Many browsers require user interaction before allowing video playback
+                        document.addEventListener('click', function playOnClick() {
+                            video.play().catch(e => console.error("Still can't play video:", e));
+                            document.removeEventListener('click', playOnClick);
+                        }, { once: true });
+                    });
+                }
+            }
+            
+            // Try to play immediately
+            playVideo();
+            
+            // Also try again when window loads (sometimes more reliable than DOMContentLoaded)
+            window.addEventListener('load', playVideo);
+            
+            // If user navigates away and back, ensure video plays again
+            window.addEventListener('pageshow', playVideo);
+        });
+        
+        // Dark mode toggle functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const darkModeToggle = document.getElementById("dark-mode-toggle");
+            const body = document.body;
+
+            // Check for previous dark mode setting
+            if (localStorage.getItem("dark-mode") === "enabled") {
+                body.classList.add("dark-mode");
+            }
+
+            darkModeToggle.addEventListener("click", () => {
+                body.classList.toggle("dark-mode");
+                if (body.classList.contains("dark-mode")) {
+                    localStorage.setItem("dark-mode", "enabled");
+                } else {
+                    localStorage.setItem("dark-mode", "disabled");
+                }
+            });
+
+            // Smooth scrolling for nav links
+            document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute("href")).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                });
             });
         });
     </script>
