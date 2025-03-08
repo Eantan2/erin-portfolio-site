@@ -23,9 +23,8 @@
     </header>
 
     <main>
-        <!-- Full-Width Background Video -->
+        <!-- Full-Width Background Video - Without Welcome Text -->
         <section class="video-section">
-            <!-- Add default attribute and poster image to improve experience -->
             <video 
                 id="background-video" 
                 autoplay 
@@ -37,13 +36,9 @@
                 <source src="video1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-                        <div class="video-overlay">
-                <h2>Welcome to My Portfolio</h2>
-            </div>
+            <!-- Removed the video-overlay div with "Welcome to My Portfolio" text -->
         </section>
 
-
-        <!-- Rest of content unchanged -->
         <!-- About Me Section -->
         <section id="about" class="about">
             <div class="about-container">
@@ -70,73 +65,33 @@
     </footer>
 
     <script>
-        // Aggressive video autoplay handling - placed at the top of the script section
+        // Video autoplay handling
         (function() {
             function forceVideoPlay() {
                 const video = document.getElementById("background-video");
                 if (!video) return;
                 
-                // Try multiple different approaches
                 try {
-                    // Method 1: Standard play with promise
                     video.play().catch(function(e) {
                         console.warn("Initial autoplay failed:", e);
-                        
-                        // Method 2: Try setting the current time first
                         setTimeout(function() {
                             video.currentTime = 0;
-                            video.play().catch(function(e) {
-                                console.warn("Second attempt failed:", e);
-                            });
+                            video.play().catch(e => console.warn("Second attempt failed:", e));
                         }, 100);
                     });
-                    
-                    // Method 3: Check if video is actually playing after a short delay
-                    setTimeout(function() {
-                        if (video.paused) {
-                            console.warn("Video still paused after initial attempts");
-                            video.play().catch(e => console.warn("Third attempt failed:", e));
-                        }
-                    }, 500);
                 } catch (err) {
                     console.error("Video play error:", err);
                 }
             }
             
             // Call our function at various points
-            // 1. As soon as script runs
             forceVideoPlay();
-            
-            // 2. On DOMContentLoaded
             document.addEventListener("DOMContentLoaded", forceVideoPlay);
-            
-            // 3. On window load
             window.addEventListener("load", forceVideoPlay);
-            
-            // 4. After a timeout (some browsers need a moment)
             setTimeout(forceVideoPlay, 1000);
-            setTimeout(forceVideoPlay, 3000);
-            
-            // 5. On first user interaction (many browsers require this)
-            ["click", "touchstart", "keydown"].forEach(function(evt) {
-                document.addEventListener(evt, function userInteractionHandler() {
-                    forceVideoPlay();
-                    // Remove the event listeners after first interaction
-                    ["click", "touchstart", "keydown"].forEach(function(e) {
-                        document.removeEventListener(e, userInteractionHandler);
-                    });
-                }, { once: true });
-            });
-            
-            // 6. On visibility change (useful when tab becomes active)
-            document.addEventListener("visibilitychange", function() {
-                if (!document.hidden) {
-                    forceVideoPlay();
-                }
-            });
         })();
 
-        // Rest of your scripts (dark mode, smooth scrolling) - unchanged
+        // Dark mode toggle functionality
         document.addEventListener("DOMContentLoaded", () => {
             const darkModeToggle = document.getElementById("dark-mode-toggle");
             const body = document.body;
